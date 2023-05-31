@@ -10,6 +10,7 @@ packages = [{include = "zero_switch"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 evdev = "^1.6.1"
+bumble = "^0.0.154"
 
 
 [build-system]
