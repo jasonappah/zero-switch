@@ -1,5 +1,6 @@
 {
     // TAILSCALE!!!
+    // needed a linux dev env so i just spun up a code-server instance on railway, hence the need to run tailscale in userspace
     "version": "2.0.0",
     "tasks": [
       {
@@ -9,20 +10,40 @@
         "presentation": {
           "reveal": "always",
           "panel": "new"
-        }
+        },
+        "problemMatcher": []
       },
       {
-        "label": "Deploy to Remote",
+        "label": "Copy to Remote",
         "type": "shell",
         "command": "rsync -vazC --delete ./ json@raspberrypi:/home/json/zero-switch",
         "presentation": {
-            "echo": true,
-            "reveal": "always",
-            "focus": true,
-            "panel": "shared",
-            "showReuseMessage": true,
-            "clear": false
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
         }
+      },
+      {
+        "label": "Run Tailscaled",
+        "command": "tailscaled --tun=userspace-networking --socks5-server=localhost:1055",
+        "type": "shell",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": false
+        },
+        "problemMatcher": []
       }
     ]
   }
