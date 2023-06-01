@@ -1,0 +1,1 @@
+poetry run python3 zero_switch/main.py

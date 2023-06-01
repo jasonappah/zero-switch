@@ -1,0 +1,28 @@
+{
+    // TAILSCALE!!!
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Mount Remote",
+        "type": "shell",
+        "command": "sshfs json@raspberrypi:/home/json/zero-switch ./.mount",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        }
+      },
+      {
+        "label": "Deploy to Remote",
+        "type": "shell",
+        "command": "rsync -vazC --delete ./ json@raspberrypi:/home/json/zero-switch",
+        "presentation": {
+            "echo": true,
+            "reveal": "always",
+            "focus": true,
+            "panel": "shared",
+            "showReuseMessage": true,
+            "clear": false
+        }
+      }
+    ]
+  }
